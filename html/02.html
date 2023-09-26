@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+<!--    准备一个容器-->
+    <div id="i">
+      <input v-model:value="name" value="" type="text" placeholder="按下回车提示输入" @keyup.enter="showInfo">
+    </div>
+
+    <script>
+      new Vue({
+            el: '#i',
+            data: {
+                name: 'Vue'
+            },
+            methods: {
+                showInfo: function () {
+                    alert('欢迎来到'  + '学习')
+                }
+            }
+      })
+    </script>
+</body>
+</html>

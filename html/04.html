@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>weather</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <h2>今天天气很{{info}}</h2>
+<!--        <button @click="isHot = !isHot">切换天气</button>-->
+        <br>
+        <hr>
+        <button @click="changeWeather">切换天气</button>
+    </div>
+
+    <script>
+        let vue = new Vue({
+            el: '#root',
+            data: {
+                isHot: true,
+            },
+            methods:{
+                // info(){
+                //     return this.isHot ? '炎热' : '凉爽'
+                // }
+                changeWeather(){
+                    this.isHot = !this.isHot
+                }
+            },
+            computed:{
+                info:{
+                    get(){
+                        return this.isHot ? '炎热' : '凉爽'
+                    }
+                }
+            },
+            // watch:{
+            //     isHot:{
+            //         immediate:true, //初始化时让handler调用一下
+            //         //isHot发生改变时，自动调用handler
+            //         handler(newVal,oldVal){
+            //             console.log('isHot被改了');
+            //             console.log(`newVal:${newVal},oldVal:${oldVal}`);
+            //         }
+            //     }
+            // }
+
+        });
+
+        vue.$watch('isHot', (newVal,oldVal)=>{
+                console.log('isHot被改了');
+                console.log(`newVal:${newVal},oldVal:${oldVal}`);
+        })
+    </script>
+
+</body>
+</html>

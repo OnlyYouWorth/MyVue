@@ -3,8 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="text/javascript" src="../js/vue.js"></script>
 </head>
 <body>
+    <div id="i">
+        <h2>欢迎来到{{name}}学习</h2>
+            <p @click.self="showInfo">
+                <a href="https://www.baidu.com" v-on:click.prevent>
+                    去百度
+                </a>
+            </p>
+            <button @click.self="showInfo">点我</button>
+            <div @click.="showInfo" style="width: 100px;height: 100px">
+                <p @click.capture.stop="showInfo">点我</p>
+            </div>
 
+    </div>
+
+<script>
+    new Vue({
+        el: '#i',
+        data: {
+            name: 'Vue'
+        },
+        methods: {
+            showInfo: function () {
+                alert('欢迎来到' + this.name + '学习')
+            }
+        }
+    })
+</script>
 </body>
 </html>
